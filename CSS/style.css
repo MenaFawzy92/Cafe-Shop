@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     /* padding & border      size  */
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -77,7 +77,8 @@ body {
     position: absolute;
     width: 150px;
     padding-bottom: 15px;
-    background-color: rgb(134, 134, 185)55, 55, 136);
+    background-color: rgb(134, 134, 185);
+    /* (55, 55, 136); */
     text-align: center;
     visibility: hidden;
     z-index: 50;
