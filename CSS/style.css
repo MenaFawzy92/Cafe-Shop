@@ -2,56 +2,78 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* padding & border      size  */
-    /* text-transform: capitalize; */
 }
+
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /*      //////////////   Styling the header     //////////////////      */
 .header{
     height: 55px;
     width: 100%;
-    background-color: rgba(39, 97, 173, 0.7);
-    position: fixed ;
+    background-color: rgba(39, 97, 173, 0.9);
+    position: fixed;
     top: 0; left: 0;
-    z-index: 30;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
 }
-.header-home, .header-search{
+.header-home {
     font-size: 25px;
     color: white;
-    padding-top: 15px;
-    padding-left: 25px;
-    text-align: center;
+    margin-right: 15px;
 }
-.header-search{
-    position: absolute;/*to get over the search bar*/
-    color: black;
+.header-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 .header input{
     height: 35px;
-    width: 15%;
+    width: 200px;
     border-radius: 15px;
-    margin-left: 17px;
-    text-align: center ;/*to get the text beside the search icon not under it*/
-    position: absolute; /*to hae the search icon*/
-    margin-top: 10px;
+    padding-left: 35px;
+    border: none;
+    outline: none;
 }
+.header-search{
+    position: absolute;
+    left: 10px;
+    color: black;
+    font-size: 18px;
+}
+
+.menu-toggle {
+    display: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
 /* Styling the header List */
 .header-list{
     list-style: none;
-    float: right;
-    font-size: 25px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
 }
 .header-list li{
-    display: inline-block;
-    margin: 12px 20px 0 0   ;    
+    margin: 0 15px;
 }
 .header-list li a{
     text-decoration: none;
     color: white;
     position: relative;
+    padding-bottom: 5px;
 }
 .header-list li a:after {
     position: absolute;
@@ -62,58 +84,83 @@ body {
     left: 0;
     background-color: rgb(25, 9, 173);
     opacity: 0;
+    transition: 0.5s;
 }
 .header-list li a:hover:after {
     width: 100%;
     opacity: 0.8;
-    transition: 0.5s;
 }
-/* Styling sub list */
-.blog-list{ /*Li*/
-    display: inline-block;
+
+/* Styling sub list (FIX: Added 1s visibility delay) */
+.blog-list{ 
     position: relative;
 }
-.header-blog{/*Ul*/
+.header-blog{
     position: absolute;
+    top: 100%; /* Attach to the bottom of the text */
+    left: 50%;
+    transform: translateX(-50%);
     width: 150px;
-    padding-bottom: 15px;
+    padding: 10px 0;
     background-color: rgb(134, 134, 185);
-    /* (55, 55, 136); */
     text-align: center;
-    visibility: hidden;
     z-index: 50;
     border: 1px solid rgb(95, 95, 192);
     border-radius: 10px;
-    margin-bottom: 5px; 
+    display: flex;
+    flex-direction: column;
+    
+    /* Animation Fix */
+    opacity: 0;
+    visibility: hidden;
+    /* Wait 1 second before hiding visibility */
+    transition: opacity 0.3s ease, visibility 0s linear 1s; 
 }
+
+/* Invisible bridge to prevent losing hover when moving mouse down */
+.header-blog::before {
+    content: '';
+    position: absolute;
+    top: -15px; 
+    left: 0;
+    width: 100%;
+    height: 15px;
+}
+
 .header-blog li {
     display: block;
-}
-.header-blog li a {
-    color: rgb(143, 143, 240);
-    display: block;
-    padding: 10px 0px;
     margin: 0;
 }
+.header-blog li a {
+    color: white;
+    display: block;
+    padding: 10px 0;
+}
+
 .blog-list:hover .header-blog {
+    opacity: 1;
     visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s; /* Show immediately */
 }
 
 /*      /////////////////////////////////////////////////////////////////       */
 /*      /////--------------------Common Styling---------------------/////       */
-/*                    section 2 :: welcome  && Section 3 :: products 
-                      Section 4 :: offer    && Section 5 :: Why                 */
 .section{
     width: 100%;
-    height: 100vh;
-    text-align: center; /* to centralize the text */
+    min-height: 100vh;
+    text-align: center;
     text-transform: capitalize;
-    position: relative; /*to centeralize the container*/
+    position: relative;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
 }
 .section-container{
     width: 80%;
-    overflow: auto;
-    margin: 50px 10% 20px 10%;
+    margin: 50px auto 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .section a{
     text-decoration: none;
@@ -121,11 +168,12 @@ body {
     color: rgb(80, 140, 189);
     line-height: 50px;
 }
-.section-title, .team-title{
+/* FIX: Force Capitalization on Titles */
+.section-title, .team-title, .pricing-title {
     font-size: 50px;
     margin-top: 20px;
-    /* margin: 100px auto 20px auto; */
     text-align: center;
+    text-transform: capitalize;
 }
 .section-line{
     width: 15%;
@@ -136,13 +184,15 @@ body {
 }
 .card{
     width: 30%;
-    height: 35vh;
-    padding-top: 35px;
+    min-height: 35vh;
+    padding: 20px;
     border: 3px solid rgb(80, 140, 189) ;
     border-radius: 12px;
-    float:  left;   
-
-    position: relative; /* to enable the effect*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 .card-center{
     margin: 0 5%;
@@ -157,13 +207,15 @@ body {
     font-size: 25px;
 }
 .card-text{
-    margin-top: 20px;
-    font-size: 17px;
+    margin-top: 15px;
+    font-size: 16px;
+    flex-grow: 1;
 }
 .overlay{
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 0; left: 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -173,33 +225,34 @@ body {
     background-image: url(../images/img2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-     
 .creative-overlay{   
-    /* width: 100%;
-    height: 100%;
-    position: absolute; */
     background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .creative-container{
-    height: 20%;
-    /* to centralizze the content */
-    width: 40%;
-    position: absolute;
-    top: 50%; left: 50%; 
-    transform: translate(-50%,-50%);
-    border-radius: 12px;
-    z-index: 1;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
 }
 .creative-title
 {
     color: white;
-    font-size: 70px;
+    font-size: 60px;
+    text-transform: capitalize;
 }
 .creative-text{
     color: #f0f8ff;
-    font-size: 40px;
+    font-size: 30px;
+    margin: 20px 0;
 }
 .creative-btn{
     width: 200px;
@@ -207,6 +260,7 @@ body {
     height: 50px;
     border-radius: 25px;
     text-transform: capitalize;
+    margin: 10px;
 }
 .btn-info{
     color: rgb(39, 97, 173);    
@@ -234,62 +288,44 @@ body {
 
 /*/////////////////////////////////////////////////////////////////////////////////////*/
 /*      /////////--------    Section 2 :: Welcome - Three Cards   ---------///////     */
-
-/* at the common section */
-.welcome{ } 
-.container-line, .welcome-line{ }
-.welcome-title{ padding-top: 30px;} .container-title{ }
-.welcome-container{ }
-.welcome-card, .card{ }
-.card-center{ }
-.welcome i{ }
-.welcome-card-title, .card-title{ }
-.welcome-card-text{ }
-.welcome a{ }
-
 .welcome-card:hover .welcome-card-title{ color: rgb(22, 34, 211);}
 .welcome-card:hover .welcome-card-text{ color: gray;}
 .welcome-card:hover  i{ color: rgb(22, 34, 211);}
 .welcome-card:hover  a{ color: rgb(22, 34, 211);}
 
-
 /*/////////////////////////////////////////////////////////////////////////*/
 /*      /////////--------    Section 3 ::  products   ---------///////     */
-
-.products-section{} /* at the common section as section*/
-.products-up-container{}/* products-up-containr at the common section as section-container*/
-.products-title{ /*of the cards*/
-    font-size: 40px;
-    margin-top: 100px;
+.products-title{ 
+    font-size: 30px;
+    margin-top: 80px;
     text-align: center;
 } 
 .products-container-up, .products-container-down{
     margin-top: 30px;
 }
 .products i{
-    padding: 30px;
-    font-size: 40px;
+    padding: 20px;
+    font-size: 30px;
     color: white;
 }
 .products-img{
-    width: 30%;
+    width: 31%;
     height: 340px;
-    float: left;
     position: relative;
     background-size: cover;
     background-position: center;
+    border-radius: 10px;
 }
 .products-img-overlay{
-    /* width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5); */
-    padding-top: 0%;
+    padding-top: 10px;
     color: white;
     visibility: hidden;
-    border-radius: 5%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.products-img:hover .products-img-overlay{    visibility: visible;}
+.products-img:hover .products-img-overlay{ visibility: visible;}
 .products-backgnd-up-left{      background-image: url(../images/Prod.1.webp);}
 .products-backgnd-up-center{    background-image: url(../images/Prod.2.webp);}
 .products-backgnd-up-right{     background-image: url(../images/prod.3.webp);}
@@ -297,19 +333,23 @@ body {
 .products-backgnd-down-center{  background-image: url(../images/Prod.5.webp);}
 .products-backgnd-down-right{   background-image: url(../images/prod.6.webp);}
 
-.products-backgnd-up-center, .products-backgnd-down-center{ margin: 0 5%;}
-
 /*////////////////////////////////////////////////////////////////////////////////*/
 /*      /////////--------    Section 4 :: Offer - 6 cards   ---------///////     */
-
-/* offer div is in the common styling called section*/
-.offer-card{ overflow: auto;}
-.offer-icon, .offer-text{
-    height: 100%;
-    float: left;
+.offer-card{ 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    text-align: left;
 }
-.offer-icon{ width: 12%;}
-.offer-text{ width: 88%;text-align: left;}
+.offer-icon{ 
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+.offer-text{ 
+    width: 85%;
+}
 .offer-container-down{
     margin-top: 60px;
 }
@@ -320,12 +360,13 @@ body {
 
 /*///////////////////////////////////////////////////////////////////////*/
 /*      /////////--------    Section 5 :: Why Us   ---------///////     */
-
 .why{
     text-align: left;
-    height: 100vh;
+    min-height: 100vh;
     line-height: 35px;
-    padding-left: 3%;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
 }
 .why-line{
     width: 15%;
@@ -333,43 +374,40 @@ body {
     background-color: rgb(80, 140, 189);
     border-radius: 5px;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
-
 .why h2{
     font-size: 40px;
+    text-transform: capitalize;
 }
 .why p{
     font-size: 20px;
 }
 .why i{
     font-size: 20px;
-    color:  rgb(80, 140, 189);
+    color: rgb(80, 140, 189);
 }
 .why-container{
     width: 80%;
-    margin: auto ;
-    overflow: auto;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 .why-container-left{
-    width: 50%;
-    height: 90%;
-    margin-left: 2%;
-    margin-top: 10%;
-    padding-top: 10%;
+    width: 45%;
     color: rgb(101, 101, 133);
-    float: left;
 }
 .why img{
-    margin-top: 80px;
     width: 100%;
-    height: 50%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
 }
 .why-container-right{
-    width: 20%;
-    height: 90%;
-    margin-top: 10%;
-    margin-left:10%;
-    float: left;
+    width: 45%;
+    position: relative;
 }
 .why-circle{
     width: 15px;
@@ -377,20 +415,17 @@ body {
     border-radius: 50%;
     float: right;
     margin-right: 10px;
+    margin-top: 15px;
     background-color: rgb(101, 101, 133);
 }
-.why-circle-right{
-    margin-right: 70px;
-}
-.why-circle:hover{
-    background-color: rgb(80, 140, 189);
-}
+.why-circle-right{ margin-right: 50px; }
+.why-circle:hover{ background-color: rgb(80, 140, 189); }
+
 /*//////////////////////////////////////////////////////////////////////*/
 /*      /////////--------    Section 6 :: cover   ---------///////     */
- 
 .cover{
-    margin-left: 10%;
-    height: 30%;
+    margin: 50px auto;
+    height: 300px;
     width: 80%;
     background-image: url(../images/cover.webp);
     background-repeat: no-repeat;
@@ -398,173 +433,190 @@ body {
     background-position: center;
     position: relative;
     border-radius: 17px;
+    display: flex;
+    align-items: center;
 }
 .cover-overlay{
-    /* height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5); */
     border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 .icons{
-    position: absolute;
-    height: 100%;
-    width: 20%;
-    margin-left: 2.5%;
+    position: relative;
+    width: 23%;
     color: white;
     text-align: center;
-    padding-top: 65px;
-    font-size: 30px;
-    line-height: 45px;
+    font-size: 25px;
+    line-height: 40px;
+    margin-left: 0;
 }
-.icons-frame2{ margin-left: 27.5%; }
-.icons-frame3{ margin-left: 52.5%; }
-.icons-frame4{ margin-left: 77.5%; }
-.icons i{color: rgb(80, 140, 189);}
+.icons i{color: rgb(80, 140, 189); font-size: 40px;}
 
 /*////////////////////////////////////////////////////////////////////////////*/
 /*      /////////--------    Section 7 :: pricing   ---------///////     */
-
-.pricing-title{ padding-top: 40px;}
-.pricing{
-    height: 100vh;
-    width: 100%;
+.pricing-title{ 
+    padding-top: 40px; 
+    text-align: center;
+    text-transform: capitalize;
 }
+.pricing{
+    min-height: 100vh;
+    width: 100%;
+    padding-bottom: 50px;
+}
+/* FIX: Center alignment and equal spacing for pricing cards */
 .pricing-parent{
-    overflow: auto;
     width: 80%;
-    margin-left: 10%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the cards in the row */
+    gap: 4%; /* Equal space between cards */
 }
 .pricing-sector{
-    height: auto;
-    width: 28%;
+    width: 28%; /* Adjusted width to fit 3 cards with gap */
     background-color: rgb(201, 213, 223);
     color: black;
     border-radius: 10px;
-    text-align: center  ;
-    float: left;
-    margin-left: 4%;
-    /* border: 3px solid orange; */
+    text-align: center;
+    padding-bottom: 20px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
-/* .pricing-sector::after{ */
 .pricing-cir{
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    border: 3px solid  rgb(80, 140, 189);
-    margin: 25px     auto   0px     auto;
-    padding-top: 9%;    
+    border: 3px solid rgb(80, 140, 189);
+    margin: 25px auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.pricing-cir h2 { font-size: 18px; }
 .pricing-sector p{
     margin: 10px 20px;
+    flex-grow: 1;
 }
 .pricing-sector button{
     width: 150px;
-    height: 25px;
+    height: 35px;
     border-radius: 10px;
     background-color: rgb(152, 179, 202); 
-    margin: 20px    auto ;
+    margin: 20px auto;
     font-weight: bold;
     font-style: italic;
     border: 3px solid rgb(80, 140, 189);
+    cursor: pointer;
+    transition: 0.3s;
 }
 .pricing-sector button:hover{
     background-color: rgb(80, 140, 189);
+    color: white;
 }
 
 /*////////////////////////////////////////////////////////////////////////*/
 /*      /////////--------    Section 8 :: Profile   ---------///////     */
+/* FIX: Set full width and 50% height */
 .profile-container{
-    height: 40%;
+    height: 50vh;
+    min-height: 450px;
     width: 100%;   
     background: url(../images/profilecover.jpg) no-repeat fixed center;
-    /* background: path repeat attachment position */
+    background-size: cover;
     position: relative;
 }
 .profile-overlay{
+    position: relative;
     height: 100%;
-    width: 100%;
-    position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center; /* Vertically centers the profile content */
 }
 .profile-section{
-    width: 30%;
-    height: 100%;
-    float: left;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
-.pricing-title{text-align: center;}
 .profile-container img{
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    float: left;
-    margin: 20px 20px;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
 .profile-container h2{
-    padding-top: 57px;
     color: rgb(80, 140, 189);
+    text-transform: capitalize; /* Capitalize names */
 }
-.profile-title{color: rgba(210, 227, 247, 0.849);}    
-
-.profile-left{margin-left: 15%;}
-.profile-right{margin-left: 5%;}
-
+.profile-title{
+    color: rgba(210, 227, 247, 0.849); 
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}    
+.profile-left{margin-left: 0;}
+.profile-right{margin-left: 0;}
 
 /*    ///////////////////////////////////     */
 /*      Section 9 :: team........           */
-.team{ height: 100vh; }
-.team-title{
- /* at the common section */
-}
+.team{ min-height: 100vh; padding-top: 50px;}
 .team-container {
     width: 80%;
     margin: 5% auto;
 }
 .team-parent {
-    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .team-item {
-    float: left;
     background-color: rgb(177, 176, 176);
-    width: 30%;
+    width: 31%;
     padding: 18px 13px; 
     text-align: center;
     border-radius: 10px ;
     position: relative;
 }
-.team-item2 {
-    margin: 0px  5%;
-}
+.team-item2 { margin: 0; }
 .team-img {
     background-color: rgb(178, 178, 178);
-    width: 90%;
-    margin: auto;
+    width: 100%;
     position: relative;
+    border-radius: 10px;
+    overflow: hidden;
 }
 .team-img  img {
     width: 100%;
     border-radius: 10px ;
+    display: block;
 }
-
 .team-overlay {
-    /* position: absolute; */
-    /* width: 100%; height: 100%; */
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
     border-radius: 10px ;
-    /* background-color: rgba(0, 0, 0, 0.5); */
+    background-color: rgba(0, 0, 0, 0.5);
     visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 15px;
+    opacity: 0;
+    transition: 0.3s;
 }
-
 .team-item:hover  .team-overlay {
     visibility: visible;
+    opacity: 1;
 }
-
 .team-overlay  a {
     display: block;
     width: 40px;
@@ -572,74 +624,73 @@ body {
     background-color: rgb(80, 140, 189);
     color: #fff;
     font-size: 20px ;
-    margin-left: auto ;
-    margin-top: 15px;
-    margin-right: 7px;
+    margin-top: 10px;
     border-radius: 10px;
-}
-
-.team-overlay  a  i {
+    text-align: center;
     line-height: 40px;
 }
-
+/* FIX: Capitalize names and titles */
 .team-info-title {
-    /* text-transform: capitalize; */
-    padding: 10px 0px;
+    padding: 15px 0px 5px 0;
+    text-transform: capitalize;
 }
 .team-info-p {
     color: rgb(69, 69, 69);
     text-transform: uppercase;
 }
-
-.team-item:hover  .team-info-title {
-    color: #fff;
-    transition: 1s;
-}
-
-.team-item:hover  .team-info-p {
-    color: blue;
-    transition: 1s;
-}
+.team-item:hover  .team-info-title { color: #fff; transition: 1s; }
+.team-item:hover  .team-info-p { color: blue; transition: 1s; }
 
 /* /////////////////////////////////////////////////////////////////// */
 /*      ////////////    section 10 :: news  ////////////////////       */
-.news{ height: 100vh; }
+.news{ min-height: 100vh; padding-top: 50px;}
 .news-parent{
-    overflow: auto;
     width: 80%;
-    margin-left: 10%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .news-sector{
-    height: auto;
-    width: 28%;
+    width: 31%;
     background-color: rgb(201, 213, 223);
     color: black;
     border-radius: 10px;
-    text-align: center  ;
-    float: left;
-    margin-left: 4%;
-
-    position: relative; /* to enabe the effect*/
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative;
 }
-.news-sector h2{margin-top: 10px;}
-.news-sector:hover h2{color: white   ;}
-.news-sector span{margin-left: 7px;}
+/* FIX: Capitalize news titles and names */
+.news-sector h2{
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+.news-sector:hover h2{color: white;}
+.news-sector span{
+    margin-left: 5px; 
+    font-size: 14px;
+    text-transform: capitalize;
+}
 .news-sector p{
     margin: 10px 20px;
     line-height: 20px;
     color: rgb(50, 69, 82);
+    text-align: left;
 }
 .news-sector:hover p{color: rgb(80, 140, 189);}
+/* FIX: Focus on upper part of image */
 .news img{
-    width: 80%;
-    height: 200px;
+    width: 90%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top center; 
     display: block;
     margin: 15px auto;
     border-radius: 10px;
 }
 .news-sector a{
     font-size: 20px;
-    padding-left: 20px;
+    padding: 0 5px;
     color: rgb(37, 144, 231); 
     text-decoration: none;    
 }
@@ -648,38 +699,48 @@ body {
 /*      ////////////    section 11 :: info  ////////////////////       */
 .info{
     width: 100%;
-    height: 40vh;
+    padding: 40px 0;
     background-color: rgb(185, 203, 209);
     text-align: center;
-    padding-top: 43px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .info img{
-    width: 20%;
-    height: 19vh;
-    display: block;
-    margin: 1vh auto;
+    width: 100%;
+    max-width: 480px; 
+    height: auto;
     border-radius: 7px;
+    margin-bottom: 20px;
 }
 .info-cont{
-    width: 335px;
-    overflow: auto;
-    margin: 20px auto   ;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 480px;
 }
+/* FIX: Add hover animation to circles */
 .info-cir{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    float: left;
     background-color: rgb(37, 144, 231);
-    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
 }
-.info-cir:hover{ background-color: rgb(10, 134, 235);}
-
+.info-cir:hover{ 
+    background-color: rgb(10, 134, 235);
+    transform: translateY(-10px); /* Move up */
+}
 .info-icon{
-    font-size: 30px;
-    border-radius: 50%;
+    font-size: 20px;
     color: white;
-    padding-top: 5px;
 }
 .info span{
     font-size: 15px;
@@ -687,51 +748,97 @@ body {
 }
 .info-right{ color: white;}
 
-
-
 /*      Effect Common       */
-/* Section 2 :: Welcome && Section 4 :: offers*/
-.effect-card24::after{
+.effect-card24::after, .effect-card::after{
     content: "";
     position: absolute;
-
     width: 0%; height: 0%;
     top: 0; left: 0;
     background-color: rgb(80, 140, 189,0.3);
-
     visibility: hidden;
-    
-    /* to be interacting */
     pointer-events: none;
-
     border-radius: 10px;
+    transition: 0.5s ease;
 }
-
-.effect-card24:hover::after{
+.effect-card24:hover::after, .effect-card:hover::after{
     visibility: visible;
     width: 100%; height: 100%;
-    transition: 1s;
 }
 
-/* Section 8 :: Pricing && Section 9 :: Team && Section 10 :: News */
-.effect-card::after{
-    content: "";
-    position: absolute;
+/* ========================================================= */
+/*                  Responsive Media Queries                 */
+/* ========================================================= */
 
-    width: 100%; height: 0%;
-    top: 0; left: 0;
-    background-color: rgb(80, 140, 189,0.3);
-
-    visibility: hidden;
+@media (max-width: 991px) {
+    .header-list { font-size: 16px; }
+    .header-list li { margin: 0 10px; }
+    .header input { width: 150px; }
     
-    /* to be interacting */
-    pointer-events: none;
-
-    border-radius: 10px;
+    .card, .products-img, .pricing-sector, .team-item, .news-sector {
+        width: 48%;
+        margin-bottom: 20px;
+    }
+    .card-center, .products-backgnd-up-center, .products-backgnd-down-center, .team-item2 {
+        margin: 0 0 20px 0;
+    }
+    .pricing-parent { gap: 2%; }
+    
+    .why-container-left, .why-container-right { width: 100%; margin-bottom: 30px; text-align: center;}
+    .why-container-left { text-align: left; }
+    .why-line { margin: 10px auto 20px auto; }
+    
+    .cover { height: auto; padding: 30px 0; }
+    .icons { width: 48%; margin-bottom: 20px; }
+    
+    .profile-section { width: 100%; margin-bottom: 30px; }
 }
 
-.effect-card:hover::after{
-    visibility: visible;
-    width: 100%; height: 100%;
-    transition: 1s;
+@media (max-width: 767px) {
+    .menu-toggle { display: block; }
+    .header-list {
+        position: absolute;
+        top: 55px;
+        left: -100%;
+        width: 100%;
+        background-color: rgba(39, 97, 173, 0.95);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        transition: 0.3s;
+    }
+    .header-list.active { left: 0; }
+    .header-list li { margin: 10px 0; }
+    .header-blog {
+        position: relative;
+        top: 0; left: 0;
+        transform: none;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        opacity: 1;
+        visibility: visible;
+        display: none; /* Handled by JS class */
+    }
+    .blog-list.active .header-blog { display: flex; }
+    
+    .section { padding-top: 80px; height: auto; }
+    .card, .products-img, .pricing-sector, .team-item, .news-sector {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .card-center, .products-backgnd-up-center, .products-backgnd-down-center, .team-item2 {
+        margin: 0 0 20px 0;
+    }
+    .pricing-parent { gap: 0; }
+    
+    .creative-title { font-size: 40px; }
+    .creative-text { font-size: 20px; }
+    .creative-btn { width: 100%; margin: 5px 0; }
+    
+    .section-title, .team-title, .pricing-title { font-size: 35px; }
+    .products-title { margin-top: 20px; }
+    
+    .icons { width: 100%; margin-bottom: 20px; }
+    
+    .info-cont { width: 100%; }
 }

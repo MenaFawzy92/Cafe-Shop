@@ -3,34 +3,40 @@
         <title>Project 1 - Mena Fawzy</title>
         <link rel="stylesheet" href="CSS/style.css">
         <link rel="stylesheet" href="CSS/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <meta charset="UTF-8">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="header">
             <i class="fa-solid fa-house-chimney header-home"></i>
-            <input type="text" class="header-bar" placeholder="Search Here"><!-- Logo -->
-            <i class="fa-brands fa-searchengin header-search"></i>
-                <ul class="header-list">
-                    <li><a href="#">home</a></li>
-                    <li><a href="#">about</a></li>
-                    <li><a href="#">portfolio</a></li>
-                    <li><a href="#">services</a></li>
-                    <li><a href="#">prices</a></li>
-                    <li><a href="#">team</a></li>
-                    <li class="blog-list"><a class="blog" href="#">blog</a>    
-                        <ul class="header-blog">
-                            <li><a class="blog-a" href="#">portfoilio</a> </li>
-                            <li><a class="blog-a" href="#">interface</a> </li>
-                            <li><a class="blog-a" href="#">direct call</a> </li>
-                        </ul><!-- header-blog -->    
-                    </li>
-                    <li><a href="#">contact us</a></li>
-                </ul>
+            <div class="header-search-wrapper">
+                <input type="text" class="header-bar" placeholder="Search Here"><!-- Logo -->
+                <i class="fa-brands fa-searchengin header-search"></i>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
 
+            <ul class="header-list" id="header-list">
+                <li><a href="#">home</a></li>
+                <li><a href="#">about</a></li>
+                <li><a href="#">portfolio</a></li>
+                <li><a href="#">services</a></li>
+                <li><a href="#">prices</a></li>
+                <li><a href="#">team</a></li>
+                <li class="blog-list"><a class="blog" href="#">blog</a>    
+                    <ul class="header-blog">
+                        <li><a class="blog-a" href="#">portfoilio</a> </li>
+                        <li><a class="blog-a" href="#">interface</a> </li>
+                        <li><a class="blog-a" href="#">direct call</a> </li>
+                    </ul><!-- header-blog -->    
+                </li>
+                <li><a href="#">contact us</a></li>
+            </ul>
         </div><!-- header -->
-<!--        /////////////////////////////////////////////////         -->
-<!--        ///////       section 1 :: creative       ///////         -->
+
          <div class="creative section">
          <div class="creative-overlay overlay">
             <div class="creative-container ">
@@ -39,11 +45,9 @@
                 <button class="creative-btn btn-info">more info</button>
                 <button class="creative-btn btn-order">order now</button>   
             </div><!-- creative-container -->
-
          </div><!-- creative-overlay -->   
         </div><!-- creative -->
-<!--        ////////////////////////////////////////////////////////////         -->
-<!--        ///////       section 2 :: welcome three cards       ///////         -->
+
         <div class="welcome section">
             <p class="welcome-title section-title">welcome to your place</p>
             <div class="welcome-line section-line"></div>
@@ -80,19 +84,16 @@
                 </div><!-- welcome-card -->
             </div><!-- welcome-container -->
         </div><!-- welcome -->
-<!--        /////////////////////////////////////////////////         -->
-<!--        ///////       section 3 :: products       ///////         -->
+
         <div class="products section">
             <h2 class="section-title">products</h2>
             <div class="section-line"></div><!-- line -->
 
             <div class="products-container-up section-container">
-                <!-- element -->
                 <div class="products-img products-backgnd-up-left">    
                     <div class="products-img-overlay overlay">
                         <h2 class="products-title">platinum coffe</h2>
                         <p class="products-price">500 L.E</p>
-
                         <a href="#"><i class="fa-regular fa-message"></i></a>
                         <a href="#"><i class="fa-regular fa-envelope"></i></a>
                     </div><!-- products-img-overlay -->    
@@ -115,11 +116,9 @@
                         <a href="#"><i class="fa-regular fa-envelope"></i></a>
                     </div><!-- products-img-overlay -->    
                 </div><!-- products-img -->
-            
             </div><!-- products-container-up -->
-        <!-- Starting  the second container the products-container-down  -->
+
             <div class="products-container-down section-container">
-                <!-- element -->
                 <div class="products-img products-backgnd-down-left">
                     <div class="products-img-overlay overlay">
                         <h2 class="products-title">turkish coffee powder</h2>
@@ -146,16 +145,10 @@
                         <a href="#"><i class="fa-regular fa-envelope"></i></a>
                     </div><!-- products-img-overlay -->    
                 </div><!-- products-img -->
-
             </div><!-- products-container-down -->
-
         </div><!-- products -->  
 
-<!--        /////////////////////////////////////////////////         -->
-<!--        ///////       section 4 :: offer       ///////         -->
-        
-<!-- <br><br><br><br><br><br><br><br><br><br> -->
-        <div class="offer   section">
+        <div class="offer section">
             <h2 class="offer-title section-title">what we offer</h2>
             <div class="offer-line section-line"></div>
             
@@ -192,7 +185,6 @@
                         <a href="#" class="offer-link">read more</a>
                     </div><!-- offer-text -->    
                 </div><!-- offer-card -->
-
             </div><!-- offer-container-up section container-->
 
             <div class="offer-container-down section-container">
@@ -229,11 +221,8 @@
                     </div><!--offer-text-->    
                 </div><!-- offer-card -->
             </div><!-- offer-container-down section container-->
-        
         </div><!-- offer -->
 
-<!--        /////////////////////////////////////////////////         -->
-<!--        /////////       section 5 :: why       //////////         -->
         <div class="why section">
             <div class="why-container">
                 <div class="why-container-left">
@@ -260,19 +249,15 @@
                         ice cream and chocolate to change your mode  
                     </p>
                 </div><!-- container-left -->
-                <!-- why-container-left -->
                 <div class="why-container-right">
                     <img src="images/why.webp" alt="why image">
                     <a href="#"><div class="why-circle why-circle-right"></div></a>
                     <a href="#"><div class="why-circle"></div></a>
                     <a href="#"><div class="why-circle"></div></a>
                 </div><!-- why-container-right -->
-
             </div><!-- why-container -->
         </div><!-- why -->
 
-<!--         ////////////////////////////////////////////////        -->
-<!--        ///////       section 6 :: cover       /////////         -->
     <div class="cover">
         <div class="cover-overlay overlay">
             <div class="icons icons-frame1">
@@ -298,26 +283,26 @@
         </div><!-- cover-overlay -->
     </div><!-- cover -->
 
-<!--        ////////////////////////////////////////////////        -->
-<!--        ///////       section 7 :: pricng       ///////         -->
     <div class="pricing">
+        <!-- Moved title outside of pricing-parent to fix centering -->
+        <h2 class="pricing-title section-title">Subscription Price</h2>
+        <div class="pricing-line section-line"></div>
+        
         <div class="pricing-parent">
-            <h2 class="pricing-title section-title">Subscribtion Price</h2>
-            <div class="pricing-line section-line"></div>
             <div class="pricing-sector effect-card">
                 <div class="pricing-cir">
                     <h2>120$/25 Cups</h2>
                 </div><!-- pricing-cir -->
                 <h2>drinks</h2>
                 <p class="text">
-                make user friendly subscribtion with us will provide you with your daily drink in your work.
+                make user friendly subscription with us will provide you with your daily drink in your work.
                 available all hot drinks that you may like at that day.
                 giving you energy for your work. 
                 </p>
                 <p class="text">
                     Perfect for daily coffee or tea drinkers, this plan gives you 25 cups of your favorite hot beverage. You can choose from a rotating menu of premium drinks each day – from Americano to matcha latte. It's an affordable way to keep your energy up without brewing at home.
                 </p>
-                <button type="submit">Start Gaming</button>
+                <button type="button">Subscribe Now</button>
             </div><!-- pricing-sector -->
 
             <div class="pricing-sector effect-card">
@@ -333,7 +318,7 @@
                 <p class="text">
                     Enjoy 20 hearty, chef‑prepared breakfasts or lunches customized to your taste. Each meal is freshly made with quality ingredients, and you can schedule delivery or pickup at your convenience. Ideal for busy professionals who want nutritious, delicious food without the prep time.
                 </p>
-                <button type="submit">Enter</button>
+                <button type="button">Choose Plan</button>
             </div><!-- pricing-sector -->
 
             <div class="pricing-sector effect-card">
@@ -349,28 +334,24 @@
                 <p class="text">
                     Our most popular package combines 25 drinks and 25 meals into one complete subscription. You get full flexibility – mix and match any drink with any meal, and even swap items on the go. Whether you need a morning coffee plus a power lunch or an afternoon tea with a snack, this plan covers everything.
                 </p>
-                <button type="submit">Download</button>
+                <button type="button">Get Started</button>
             </div><!-- pricing-sector -->
         </div><!-- pricing-parent -->
     </div><!-- pricing -->
 
-<!--        ////////////////////////////////////////////////        -->
-<!--        ///////       section 8 :: profile       ///////         -->
         <div class="profile-container">
             <div class="profile-overlay overlay">
                 <div class="profile-section profile-left">
                     <a href="#"><img src="images/Mena.jpg" alt="Mena"></a>
                     <h2 class="profile-name">mena fawzy</h2>
                     <p class="profile-title">sales manager</p>
-                    <br><br><br><br>
                     <p>his first periority is to provide your comfort with extra interesting experiment, with suitable set.</p>
                     <p>adding fun to your normal meal & company.</p>
                 </div><!--profile-left-->
                 <div class="profile-section profile-right">
-                    <a href="#"><img src="images/john cena.webp" alt="Cena"></a>
+                    <a href="#"><img src="images/john cena.webp" onerror="this.src='https://via.placeholder.com/150?text=John+Cena'" alt="Cena"></a>
                     <h2 class="profile-name">john cena</h2>
                     <p class="profile-title">entertainment manager</p>
-                    <br><br><br><br>
                     <p>the world heavy weight champion, the greatest of all time GOAT.</p>
                     <p>the best without doubt</p>
                     <p>here to tell us about himself</p>
@@ -378,18 +359,15 @@
             </div><!--profile-overlay-->
         </div><!--profile-container-->
 
-<!--        ////////////////////////////////////////////////        -->
-<!--        ///////       section 9 :: team       /////////         -->
     <div class="team">
         <h2 class="team-title section-title section-title">our team</h2>
         <div class="team-line section-line"></div>
             
         <div class="team-container">
         <div class="team-parent">
-
             <div class="team-item effect-card">
                 <div class="team-img">
-                    <img  src="images/Mena.jpg"  width="180px"  height="180px"  alt="ahmed">
+                    <img  src="images/Mena.jpg"  alt="ahmed">
                     <div class="team-overlay overlay">
                         <a href="#"><i class="fab fa-facebook-square i1"></i></a>  
                         <a href="#"> <i class="fab fa-instagram-square i2"></i></a> 
@@ -404,7 +382,7 @@
 
             <div class="team-item team-item2 effect-card">
                 <div class="team-img">
-                    <img src="images/mena2.jpg"  width="180px"  height="180px"  alt="ahmed">
+                    <img src="images/mena2.jpg"  alt="ahmed">
                     <div class="team-overlay overlay">
                     <a href="#"><i class="fab fa-facebook-square i1"></i></a>  
                         <a href="#"> <i class="fab fa-instagram-square i2"></i></a> 
@@ -419,7 +397,7 @@
 
             <div class="team-item effect-card">
                 <div class="team-img">
-                    <img src="images/mena3.jpeg"  width="180px"  height="180px"  alt="ahmed">
+                    <img src="images/mena3.jpeg"  alt="ahmed">
                     <div class="team-overlay overlay">
                     <a href="#"><i class="fab fa-facebook-square i1"></i></a>  
                         <a href="#"> <i class="fab fa-instagram-square i2"></i></a> 
@@ -434,15 +412,14 @@
         </div>  <!-- /team-parent -->
         </div>  <!-- /team-container -->
     </div><!-- team -->
-<!--        ////////////////////////////////////////////////        -->
-<!--        ///////       section 10 :: news       /////////         -->
+
     <div class="news">
         <h2 class="news-title section-title">recent news</h2>
         <div class="news-line section-line"></div>
             
         <div class="news-parent">
             <div class="news-sector effect-card">
-                <img src="../Project/images/Mena.jpg" alt="mena">
+                <img src="images/Mena.jpg" alt="mena">
                 <a href="#"><i class="fa-brands fa-facebook"></i></a><span>mena</span>    
                 <a href="#"><i class="fa-brands fa-instagram"></i></a><span>Instagram</span>    
                 <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a><span>twitter X</span>
@@ -457,7 +434,7 @@
             </div><!-- news-sector -->
             
             <div class="news-sector effect-card">
-                <img src="../Project/images/john cena.webp" alt="john">
+                <img src="images/john cena.webp" onerror="this.src='https://via.placeholder.com/300x200?text=John+Cena'" alt="john">
                 <a href="#"><i class="fa-brands fa-facebook"></i></a><span>john</span>    
                 <a href="#"><i class="fa-brands fa-square-instagram"></i></a><span>Instagram</span>    
                 <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a><span>twitter X</span>
@@ -472,7 +449,7 @@
             </div><!-- news-sector -->
             
             <div class="news-sector effect-card">
-                <img src="../Project/images/mena2.jpg" alt="mena">
+                <img src="images/mena2.jpg" alt="mena">
                 <a href="#"><i class="fa-brands fa-facebook"></i></a><span>mena</span>    
                 <a href="#"><i class="fa-brands fa-instagram"></i></a><span>Instagram</span>    
                 <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a><span>twitter X</span>
@@ -485,38 +462,26 @@
                 </p>
                 <a href="#">read more</a>
             </div><!-- news-sector -->
-
         </div><!-- news-parent -->
     </div><!-- news -->
 <br><br><br>
-<!--        ////////////////////////////////////////////////        -->
-<!--        ///////       section 11 :: info       /////////         -->
+
     <div class="info">
-        <!-- <p>s</p> -->
-        <img src="../Project/images/customer service.webp" alt="information">
+        <img src="images/customer service.webp" alt="information">
         <div class="info-cont">
-        <div class="info-cir"><a href="#"><i class="fa-brands fa-facebook info-icon"></i></a></div>    
-        <div class="info-cir"><a href="#"><i class="fa-brands fa-instagram info-icon"></i></a></div>    
-        <div class="info-cir"><a href="#"><i class="fa-brands fa-square-x-twitter info-icon"></i></a></div>
-        <div class="info-cir"><a href="#"><i class="fa-brands fa-linkedin info-icon"></i></a></div>
-        <div class="info-cir"><a href="#"><i class="fa-brands fa-tiktok info-icon"></i></a></div>
-        <div class="info-cir"><a href="#"><i class="fa-brands fa-youtube info-icon"></i></a></div>
-        <div class="info-cir"><a href="#"><i class="fa-brands fa-google-plus info-icon"></i></a></div>       
-
-
+            <div class="info-cir"><a href="#"><i class="fa-brands fa-facebook info-icon"></i></a></div>    
+            <div class="info-cir"><a href="#"><i class="fa-brands fa-instagram info-icon"></i></a></div>    
+            <div class="info-cir"><a href="#"><i class="fa-brands fa-square-x-twitter info-icon"></i></a></div>
+            <div class="info-cir"><a href="#"><i class="fa-brands fa-linkedin info-icon"></i></a></div>
+            <div class="info-cir"><a href="#"><i class="fa-brands fa-tiktok info-icon"></i></a></div>
+            <div class="info-cir"><a href="#"><i class="fa-brands fa-youtube info-icon"></i></a></div>
+            <div class="info-cir"><a href="#"><i class="fa-brands fa-google-plus info-icon"></i></a></div>       
         </div><!-- info-cont -->
-         <!-- <br><br> -->
-        <i class="fa-regular fa-copyright info-right"></i><span> 2026. all rihgts reserved by cilantro service</span>
-
-
+        <div class="info-footer">
+            <i class="fa-regular fa-copyright info-right"></i><span> 2026. all rihgts reserved by cilantro service</span>
+        </div>
     </div><!-- info -->
 
-
-
-
+    <script src="script.js"></script>
     </body>
-
-
-
-
 </html>
