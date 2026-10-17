@@ -329,8 +329,8 @@ img {
 .products-backgnd-up-left{      background-image: url(../images/Prod.1.webp);}
 .products-backgnd-up-center{    background-image: url(../images/Prod.2.webp);}
 .products-backgnd-up-right{     background-image: url(../images/prod.3.webp);}
-.products-backgnd-down-left{    background-image: url(../images/Prod.4.webp);}
-.products-backgnd-down-center{  background-image: url(../images/Prod.5.webp);}
+.products-backgnd-down-left{    background-image: url(../images/prod.4.webp);}
+.products-backgnd-down-center{  background-image: url(../images/prod.5.webp);}
 .products-backgnd-down-right{   background-image: url(../images/prod.6.webp);}
 
 /*////////////////////////////////////////////////////////////////////////////////*/
